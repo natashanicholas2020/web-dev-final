@@ -7,8 +7,8 @@ export default function Navigation() {
     <nav className="wd-navbar">
       <Link to="/LoveIsland/Home" className="wd-nav-link">Home</Link>
       <Link to="/LoveIsland/Account" className="wd-nav-link">Account</Link>
-      <Link to="/" className="wd-nav-link">Islanders</Link>
-      <Link to="/" className="wd-nav-link">Community</Link>
+      <Link to="/LoveIsland/Islanders" className="wd-nav-link">Islanders</Link>
+      <Link to="/LoveIsland/Community" className="wd-nav-link">Community</Link>
     </nav>
   );
 }

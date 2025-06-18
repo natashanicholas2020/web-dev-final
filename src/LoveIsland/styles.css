@@ -142,9 +142,38 @@
     font-family: 'Montserrat', sans-serif;
   }
   
+  .new-updates-section {
+    background-color: #f7f7f7;
+    height: 100; /* 80% of the viewport height */ /* ⬅️ increase this value */
+    width: 100%;
+    max-width: 950px;
+    overflow-y: auto;
+    padding: 1rem 1.5rem;
+    margin-top: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    text-align: left;
+  }
   
+
+  .new-updates-section p {
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
   
+  .new-updates-section p:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
   
-  
-  
+  .wd-updates-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem; /* Or any size like 18px, 16px, etc. */
+    color: white;         /* Optional: for better contrast */
+    margin-top: 1rem;
+  }
   
