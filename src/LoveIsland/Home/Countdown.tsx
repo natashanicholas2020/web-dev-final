@@ -45,9 +45,10 @@ export default function Countdown() {
   return (
     <div className="montserrat-text">
       <h2>Time Until Next Episode:</h2>
-      <p style={{ fontSize: "2rem", fontWeight: "bold" }}>
-        {formatTime(timeLeft)}
-      </p>
+      <div className="countdown-image-wrapper">
+        <p className="countdown-text">{formatTime(timeLeft)}</p>
+      </div>
     </div>
-  );
+  );  
+  
 }

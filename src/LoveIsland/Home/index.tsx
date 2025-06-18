@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <div className="wd-background-layer" />
       <div id="wd-home" className="wd-content-layer">
-        <h1>Welcome to Love Island Home</h1>
+        <h1>Welcome to Love Island</h1>
         <Countdown />
       </div>
     </>
