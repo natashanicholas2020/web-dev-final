@@ -1,11 +1,4 @@
-/* #wd-loveisland {
-    background-color: #08cfcf;
-    height: 100vh;
-    width: 100vw; 
-    display: flex;
-    justify-content: center;  
-    align-items: top;     
-  } */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
   
   #wd-loveisland h1 {
     color: hotpink;
@@ -103,6 +96,32 @@
     position: relative;
     z-index: 1;                /* above background */
   }
+  
+  #wd-home h1 {
+    font-family: 'Montserrat', sans-serif;
+  }  
+  
+  .montserrat-text {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  #wd-home {
+    position: relative;
+    top: 120px;
+    height: calc(100vh - 120px);
+    width: 100vw;          /* full viewport width */
+    max-width: 100vw;      /* prevent max width restrictions */
+    margin: 0;             /* remove default margin */
+    padding: 0 20px;       /* optional side padding */
+    box-sizing: border-box; /* include padding in width */
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;    /* or flex-start / flex-end if you want */
+    text-align: center;
+  }
+  
+  
   
   
   

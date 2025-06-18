@@ -6,8 +6,13 @@ function getNext9PM(): Date {
 
   next9PM.setHours(21, 0, 0, 0); // Set to 9:00 PM today
 
-  // If 9 PM today already passed, set to 9 PM tomorrow
+  // If 9 PM today already passed, move to the next day
   if (now >= next9PM) {
+    next9PM.setDate(next9PM.getDate() + 1);
+  }
+
+  // If the next 9 PM falls on a Wednesday (3), skip to Thursday (add 1 more day)
+  if (next9PM.getDay() === 3) {
     next9PM.setDate(next9PM.getDate() + 1);
   }
 
@@ -38,8 +43,8 @@ export default function Countdown() {
   }, []);
 
   return (
-    <div>
-      <h2>Countdown to 9 PM:</h2>
+    <div className="montserrat-text">
+      <h2>Time Until Next Episode:</h2>
       <p style={{ fontSize: "2rem", fontWeight: "bold" }}>
         {formatTime(timeLeft)}
       </p>
