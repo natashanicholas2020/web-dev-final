@@ -183,7 +183,8 @@ export default function Profile() {
   if (!user) return null;
 
   return (
-    <div id="wd-profile-screen" className="container py-5">
+    <div className="d-flex justify-content-center align-items-center min-vh-100">
+    <div id="wd-profile-screen" className="container">
       <div className="row justify-content-center">
         <div className="col-md-6">
           <h1 className="text-center mb-4">Profile</h1>
@@ -265,6 +266,7 @@ export default function Profile() {
           </Form>
         </div>
       </div>
+    </div>
     </div>
   );
 }

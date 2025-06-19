@@ -6,7 +6,6 @@ import Signup from "./Signup";
 export default function Account() {
   return (
     <div id="wd-account-screen">
-      <h2>Account</h2>
       <Routes>
         <Route path="/" element={<Navigate to="/LoveIsland/Account/Signin" />} />
         <Route path="/Signin" element={<Signin />} />

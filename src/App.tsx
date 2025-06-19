@@ -71,7 +71,8 @@ export default function App() {
             {/* Mount Account component that handles Signin, Signup, Profile routes */}
             <Route path="/LoveIsland/Account/*" element={<Account />} />
 
-            <Route path="/LoveIsland/Community" element={<Community />} />
+            <Route path="/LoveIsland/Community/*" element={<Community />} />
+
             <Route path="/LoveIsland/Islanders" element={<Islanders />} />
             <Route path="/LoveIsland/Islanders/:id" element={<IslanderDetails />} />
 
