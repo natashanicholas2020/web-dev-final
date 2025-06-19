@@ -1,0 +1,31 @@
+.wd-background-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #08cfcf;
+    z-index: -1;
+ }
+
+  .new-updates-section {
+    padding: 2rem 0;
+    min-height: 300px;
+
+    display: flex;
+    justify-content: center;
+  }
+  
+  .updates-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    color: black;
+  }
+  
+  /* .updates-card a {
+    text-decoration: underline;
+  } */
