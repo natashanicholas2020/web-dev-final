@@ -1,0 +1,58 @@
+#wc-community-screen {
+    padding: 20px;
+  }
+  
+  .islander-card h3 {
+    margin-top: 0;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .islander-card p {
+    margin: 6px 0;
+  }
+
+  #wd-islander {
+    padding-top: 190px; /* Ensures islanders appear below logo + nav bar */
+  }
+  
+  .islanders-title {
+    color: black;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .islander-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .islander-card {
+    width: 180px;
+    height: 250px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    cursor: pointer;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .islander-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  
+  

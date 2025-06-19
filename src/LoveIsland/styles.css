@@ -177,3 +177,14 @@
     margin-top: 1rem;
   }
   
+  .wd-content {
+    padding-top: 220px; /* Push content down below logo + navbar */
+  }
+
+  #wd-islander {
+    padding-top: 220px; /* Ensures islander cards appear below logo + navbar */
+    background-color: #08cfcf; /* Consistent blue background */
+    min-height: 100vh;
+  }
+  
+  
