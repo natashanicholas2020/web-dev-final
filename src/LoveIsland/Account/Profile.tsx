@@ -105,10 +105,8 @@
 
 
 
-
-
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Form, Button, Spinner, Alert } from "react-bootstrap";
 
 type User = {
@@ -142,7 +140,6 @@ export default function Profile() {
         });
 
         if (res.status === 401 || res.status === 403) {
-          // Not authorized or token invalid
           localStorage.removeItem("token");
           navigate("/LoveIsland/Account/Signin");
           return;
@@ -246,19 +243,15 @@ export default function Profile() {
               />
             </Form.Group>
 
+            {/* Display role as plain read-only text */}
             <Form.Group className="mb-3">
               <Form.Control
                 id="wd-role"
-                as="select"
+                type="text"
                 value={user.role}
                 className="form-control-lg"
-                disabled
-              >
-                <option value="USER">User</option>
-                <option value="ADMIN">Admin</option>
-                <option value="FACULTY">Faculty</option>
-                <option value="STUDENT">Student</option>
-              </Form.Control>
+                readOnly
+              />
             </Form.Group>
 
             <Button
