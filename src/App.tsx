@@ -1,41 +1,7 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useState } from "react";
-
-import Account from "./LoveIsland/Account";  // Import the Account component (with nested routes)
-import Home from "./LoveIsland/Home";
-import Community from "./LoveIsland/Community";
-import Islanders from "./LoveIsland/Islanders";
-import Navigation from "./LoveIsland/Navigation";
-import Logo from "./LoveIsland/Logo";
-import IslanderDetails from "./LoveIsland/Islanders/IslanderDetails"; // Adjust path if needed
+import LoveIsland from "./LoveIsland";  // or wherever index.tsx is located
 
 export default function App() {
-  const [isSignedIn, setIsSignedIn] = useState(false);
-
-  return (
-    <BrowserRouter>
-      <div className="wd-blue-bg">
-        <Logo />
-        <Navigation />
-        <div className="wd-content">
-          <Routes>
-            <Route path="/" element={<Navigate to="/LoveIsland/Home" replace />} />
-            <Route path="/LoveIsland/Home" element={<Home />} />
-
-            {/* Mount Account component that handles Signin, Signup, Profile routes */}
-            <Route path="/LoveIsland/Account/*" element={<Account />} />
-
-            <Route path="/LoveIsland/Community/*" element={<Community />} />
-
-            <Route path="/LoveIsland/Islanders" element={<Islanders />} />
-            <Route path="/LoveIsland/Islanders/:id" element={<IslanderDetails />} />
-
-            {/* Fallback route for unknown paths */}
-            <Route path="*" element={<div>Page not found</div>} />
-          </Routes>
-        </div>
-      </div>
-    </BrowserRouter>
-  );
+  return <LoveIsland />;
 }
+
 
