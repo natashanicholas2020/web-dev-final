@@ -134,7 +134,7 @@ export default function LoveIsland() {
             <Route path="/LoveIsland/Account/*" element={<Account />} />
             <Route path="/LoveIsland/Community/*" element={<Community />} />
             <Route path="/LoveIsland/Islanders" element={<Islanders />} />
-            <Route path="/LoveIsland/Islanders/:id" element={<IslanderDetails />} />
+            {/* <Route path="/LoveIsland/Islanders/:id" element={<IslanderDetails />} /> */}
             <Route path="*" element={<div>Page not found</div>} />
           </Routes>
         </div>

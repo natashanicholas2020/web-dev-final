@@ -13,11 +13,14 @@
   }
 
   #wd-islander {
-    padding-top: 190px; /* Ensures islanders appear below logo + nav bar */
+    padding-top: 50px; /* Ensures islanders appear below logo + nav bar */
+    background-color: #08cfcf; /* or any shade of blue you prefer */
+    /* min-height: 100vh; ensures it covers full screen height */
   }
   
+  
   .islanders-title {
-    color: black;
+    color: white;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
   }

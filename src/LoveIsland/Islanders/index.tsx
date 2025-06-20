@@ -1,6 +1,6 @@
 // import React, { useEffect, useState } from 'react';
 // import { Link } from 'react-router-dom';
-// import '../styles.css';
+// //import '../styles.css';
 // import './styles.css';
 
 // interface Islander {
@@ -8,6 +8,7 @@
 //   first_name: string;
 //   last_name: string;
 //   image?: string;
+//   episode_left: number | null; // Add this field
 // }
 
 // export default function Islanders() {
@@ -49,7 +50,14 @@
 //                 src={`/${islander.image}`}
 //                 alt={`${islander.first_name} ${islander.last_name}`}
 //                 className="islander-card-image"
-//                 style={{ maxWidth: "150px", borderRadius: "8px", marginBottom: '8px' }}
+//                 style={{
+//                   maxWidth: "150px",
+//                   borderRadius: "8px",
+//                   marginBottom: '8px',
+//                   filter: islander.episode_left !== null ? 'grayscale(100%)' : 'none',
+//                   opacity: islander.episode_left !== null ? 0.6 : 1,
+//                   transition: 'filter 0.3s ease, opacity 0.3s ease',
+//                 }}
 //               />
 //             )}
 //             <h3>
@@ -64,8 +72,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles.css';
-import './styles.css';
+import "./styles.css"
 
 interface Islander {
   _id: string;
@@ -99,7 +106,7 @@ export default function Islanders() {
   if (loading) return <div>Loading islanders...</div>;
   if (error) return <div>Error: {error}</div>;
 
-  return (
+    return (
     <div id="wd-islander" className="wd-content-layer">
       <h2 className="islanders-title">Islanders</h2>
       <div className="islander-cards-container">
@@ -131,11 +138,8 @@ export default function Islanders() {
         ))}
       </div>
     </div>
-  );
-}
-
-
-
+    );
+  }
 
 
 
