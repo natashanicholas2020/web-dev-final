@@ -1,4 +1,29 @@
-#wc-community-screen {
+html, body {
+    height: auto; /* allow full height */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #08cfcf;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  #root {
+    position: fixed;   /* fix to viewport */
+    top: 200px;       /* start 200px from top */
+    left: 0;
+    right: 0;
+    bottom: 0;        /* stretch to bottom */
+    overflow-y: auto; /* enable vertical scroll if content overflows */
+    background-color: #08cfcf;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  
+  /* rest of your styles unchanged */
+  
+  #wc-community-screen {
     padding: 20px;
   }
   
@@ -11,20 +36,19 @@
   .islander-card p {
     margin: 6px 0;
   }
-
+  
   #wd-islander {
     padding-top: 50px; /* Ensures islanders appear below logo + nav bar */
     background-color: #08cfcf; /* or any shade of blue you prefer */
     /* min-height: 100vh; ensures it covers full screen height */
   }
   
-  
   .islanders-title {
     color: white;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
   }
-
+  
   .islander-cards-container {
     display: flex;
     flex-wrap: wrap;
@@ -48,23 +72,58 @@
     padding: 15px;
     text-align: center;
   }
-
+  
   .islander-details {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     color: black;
-  }  
+  }
   
   .islander-details .islander-image {
-    display: block;       /* make image a block element */
-    margin: 0 auto 20px;  /* top/bottom margin 0 and 20px, auto left/right centers */
+    display: block;
+    margin: 0 auto 20px;
     width: 400px;
     height: 400px;
     border-radius: 8px;
     object-fit: cover;
   }
   
+  .islander-details-container {
+    background-color: #08cfcf;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+    color: black;
+  }
   
+  .islander-image {
+    width: 400px;
+    height: 400px;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 20px;
+  }
   
+  .islander-name {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
+  }
   
+  .islander-details-card {
+    background-color: white;
+    color: black;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    padding: 30px 20px;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .islander-details-card p {
+    margin: 10px 0;
+  }
   
