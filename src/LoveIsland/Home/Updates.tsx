@@ -1,46 +1,211 @@
-// NewUpdates.tsx
+// // NewUpdates.tsx
+// import React from "react";
+
+// export default function Updates() {
+//   return (
+//     <section className="new-updates-section"
+//     style={{ paddingTop: "2rem", paddingBottom: "2rem", minHeight: "300px" }}>
+//       <p>
+//         VILLA UPDATES:{" "}
+//         <a
+//           href="https://www.instagram.com/p/DLBnQ1pPgvc/"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           style={{ color: "blue", textDecoration: "underline" }}
+//         >
+//           Jalen
+//         </a>{" "}
+//         has been dumped from the villa.
+//       </p>
+
+//       <p>VILLA UPDATES: There will be a recoupling tonight.</p>
+
+//       <p>
+//         Paige DeSorbo Reveals Medical Emergency Led to Sudden Love Island USA
+//         Exit. Read more{" "}
+//         <a
+//           href="https://www.eonline.com/news/1418835/paige-desorbos-medical-emergency-led-to-love-island-usa-exit"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           style={{ color: "blue", textDecoration: "underline" }}
+//         >
+//           here
+//         </a>.
+//       </p>
+
+//       <p>
+//         Serena Page and JaNa Craig from Love Island USA's Season 6 will be on
+//         Aftersun this weekend. Be sure to tune in only on{" "}
+//         <a
+//           href="https://www.peacocktv.com/"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           style={{ color: "blue", textDecoration: "underline" }}
+//         >
+//           Peacock
+//         </a>
+//         !
+//       </p>
+
+//       <p>
+//         Love Island USA's Belle-A on the Powerful Family Story Behind Her Unique
+//         Name — and Why the Dash Matters. Read more{" "}
+//         <a
+//           href="https://people.com/love-island-usa-belle-a-shares-family-story-behind-unique-name-exclusive-11755642"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           style={{ color: "blue", textDecoration: "underline" }}
+//         >
+//           here
+//         </a>.
+//       </p>
+
+//       <p>
+//         VILLA UPDATES:{" "}
+//         <a
+//           href="https://www.instagram.com/p/DK8e2thBboZ/"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           style={{ color: "blue", textDecoration: "underline" }}
+//         >
+//           Charlie
+//         </a>{" "}
+//         has been dumped from the villa.
+//       </p>
+
+//       <p>
+//         VILLA UPDATES: There will be a recoupling tonight based on America's
+//         votes. Who do YOU think the bombshells will be paired up with?
+//       </p>
+//     </section>
+//   );
+// // }
+
+// // Updates.tsx
+// import React from "react";
+
+// export default function Updates() {
+//   return (
+//     <section className="new-updates-section">
+//       <p>
+//         VILLA UPDATES:{" "}
+//         <a
+//           href="https://www.instagram.com/p/DLBnQ1pPgvc/"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className="update-link"
+//         >
+//           Jalen
+//         </a>{" "}
+//         has been dumped from the villa.
+//       </p>
+
+//       <p>VILLA UPDATES: There will be a recoupling tonight.</p>
+
+//       <p>
+//         Paige DeSorbo Reveals Medical Emergency Led to Sudden Love Island USA
+//         Exit. Read more{" "}
+//         <a
+//           href="https://www.eonline.com/news/1418835/paige-desorbos-medical-emergency-led-to-love-island-usa-exit"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className="update-link"
+//         >
+//           here
+//         </a>.
+//       </p>
+
+//       <p>
+//         Serena Page and JaNa Craig from Love Island USA's Season 6 will be on
+//         Aftersun this weekend. Be sure to tune in only on{" "}
+//         <a
+//           href="https://www.peacocktv.com/"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className="update-link"
+//         >
+//           Peacock
+//         </a>
+//         !
+//       </p>
+
+//       <p>
+//         Love Island USA's Belle-A on the Powerful Family Story Behind Her Unique
+//         Name — and Why the Dash Matters. Read more{" "}
+//         <a
+//           href="https://people.com/love-island-usa-belle-a-shares-family-story-behind-unique-name-exclusive-11755642"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className="update-link"
+//         >
+//           here
+//         </a>.
+//       </p>
+
+//       <p>
+//         VILLA UPDATES:{" "}
+//         <a
+//           href="https://www.instagram.com/p/DK8e2thBboZ/"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className="update-link"
+//         >
+//           Charlie
+//         </a>{" "}
+//         has been dumped from the villa.
+//       </p>
+
+//       <p>
+//         VILLA UPDATES: There will be a recoupling tonight based on America's
+//         votes. Who do YOU think the bombshells will be paired up with?
+//       </p>
+//     </section>
+//   );
+// }
+
+
 import React from "react";
 
 export default function Updates() {
   return (
-    <section className="new-updates-section"
-    style={{ paddingTop: "2rem", paddingBottom: "2rem", minHeight: "300px" }}>
+    <section className="new-updates-section">
       <p>
-        VILLA UPDATES:{" "}
+        <strong>VILLA UPDATES: </strong>
         <a
           href="https://www.instagram.com/p/DLBnQ1pPgvc/"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: "blue", textDecoration: "underline" }}
+          className="update-link"
         >
           Jalen
         </a>{" "}
         has been dumped from the villa.
       </p>
 
-      <p>VILLA UPDATES: There will be a recoupling tonight.</p>
+      <p>
+        <strong>VILLA UPDATES: </strong> There will be a recoupling tonight.
+      </p>
 
       <p>
-        Paige DeSorbo Reveals Medical Emergency Led to Sudden Love Island USA
-        Exit. Read more{" "}
+        <strong>Paige DeSorbo Reveals Medical Emergency Led to Sudden Love Island USA Exit. Read more </strong>
         <a
           href="https://www.eonline.com/news/1418835/paige-desorbos-medical-emergency-led-to-love-island-usa-exit"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: "blue", textDecoration: "underline" }}
+          className="update-link"
         >
           here
-        </a>.
+        </a>
+        .
       </p>
 
       <p>
-        Serena Page and JaNa Craig from Love Island USA's Season 6 will be on
-        Aftersun this weekend. Be sure to tune in only on{" "}
+        <strong>Serena Page and JaNa Craig from Love Island USA's Season 6 will be on Aftersun this weekend. Be sure to tune in only on </strong>
         <a
           href="https://www.peacocktv.com/"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: "blue", textDecoration: "underline" }}
+          className="update-link"
         >
           Peacock
         </a>
@@ -48,25 +213,25 @@ export default function Updates() {
       </p>
 
       <p>
-        Love Island USA's Belle-A on the Powerful Family Story Behind Her Unique
-        Name — and Why the Dash Matters. Read more{" "}
+        <strong>Love Island USA's Belle-A on the Powerful Family Story Behind Her Unique Name — and Why the Dash Matters. Read more </strong>
         <a
           href="https://people.com/love-island-usa-belle-a-shares-family-story-behind-unique-name-exclusive-11755642"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: "blue", textDecoration: "underline" }}
+          className="update-link"
         >
           here
-        </a>.
+        </a>
+        .
       </p>
 
       <p>
-        VILLA UPDATES:{" "}
+        <strong>VILLA UPDATES: </strong>
         <a
           href="https://www.instagram.com/p/DK8e2thBboZ/"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: "blue", textDecoration: "underline" }}
+          className="update-link"
         >
           Charlie
         </a>{" "}
@@ -74,8 +239,7 @@ export default function Updates() {
       </p>
 
       <p>
-        VILLA UPDATES: There will be a recoupling tonight based on America's
-        votes. Who do YOU think the bombshells will be paired up with?
+        <strong>VILLA UPDATES: </strong> There will be a recoupling tonight based on America's votes. Who do YOU think the bombshells will be paired up with?
       </p>
     </section>
   );

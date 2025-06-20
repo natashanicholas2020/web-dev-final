@@ -1,8 +1,8 @@
-
 import { useEffect, useState } from "react";
-import Countdown from "./Countdown";
 import { Link } from "react-router-dom";
+import Countdown from "./Countdown";
 import Updates from "./Updates";
+import "./styles.css";
 
 interface Islander {
   _id: string;
@@ -35,42 +35,42 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <div className="wd-background-layer" />
-      <div id="wd-home" className="wd-content-layer">
-        <h1>Welcome to Love Island USA</h1>
-        <Countdown />
-        <div></div>
-        <h2 className="wd-updates-heading">New Updates</h2>
-
-        <Updates />
-
-        <h2 className="wd-updates-heading">Current Islanders:</h2>
-        {loading && <p>Loading current islanders...</p>}
-        {error && <p>Error: {error}</p>}
-
-        <div className="islander-cards-container">
-          {islanders.map((islander) => (
-            <Link
-              to={`/LoveIsland/Islanders/${islander._id}`}
-              key={islander._id}
-              className="islander-card"
-            >
-              {islander.image && (
-                <img
-                  src={`/${islander.image}`} // Leading slash for public folder images
-                  alt={`${islander.first_name} ${islander.last_name}`}
-                  className="islander-card-image"
-                  style={{ maxWidth: "150px", borderRadius: "8px", marginBottom: "8px" }}
-                />
-              )}
-              <h3>
-                {islander.first_name} {islander.last_name}
-              </h3>
-            </Link>
-          ))}
+    <div className="home-container">
+      <div>
+      <h1 className="montserrat-heading">Time Until Next Love Island USA Episode:</h1>
         </div>
+        <div>
+        <Countdown />
       </div>
-    </>
+      <div>
+        <Updates />
+      </div>
+
+      <h2 className="wd-updates-heading">Current Islanders:</h2>
+      {loading && <p>Loading current islanders...</p>}
+      {error && <p>Error: {error}</p>}
+
+      <div className="islander-cards-container">
+        {islanders.map((islander) => (
+          <Link
+            to={`/LoveIsland/Islanders/${islander._id}`}
+            key={islander._id}
+            className="islander-card"
+          >
+            {islander.image && (
+              <img
+                src={`/${islander.image}`}
+                alt={`${islander.first_name} ${islander.last_name}`}
+                className="islander-card-image"
+                style={{ maxWidth: "150px", borderRadius: "8px", marginBottom: "8px" }}
+              />
+            )}
+            <h3>
+              {islander.first_name} {islander.last_name}
+            </h3>
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 }

@@ -43,12 +43,12 @@ export default function Countdown() {
   }, []);
 
   return (
-    <div className="montserrat-text">
-      <h2>Time Until Next Episode:</h2>
+    <div>
+    <div className="countdown-container"> {/* Wrap in countdown-container */}
       <div className="countdown-image-wrapper">
         <p className="countdown-text">{formatTime(timeLeft)}</p>
       </div>
     </div>
-  );  
-  
+    </div>
+  );
 }

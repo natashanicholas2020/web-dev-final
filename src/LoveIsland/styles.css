@@ -1,190 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-  
-  #wd-loveisland h1 {
-    color: hotpink;
-    font-size: 3rem;
-    text-align: center;
-  }
-  
-  html, body {
-    height: 100%;
-    width: 100%;
+/* Global reset for margin and padding */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
-  .wd-navbar {
-    position: fixed;       /* Makes it stick to the screen */
-    top: 100px;             /* Push it slightly down from the top */
-    left: 0;
-    right: 0;
-    height: 70px;          /* Make it taller */
-    background-color: #ff69b4;
-    display: flex;
-    align-items: center;
-    padding: 0 30px;
-    gap: 30px;
-    z-index: 1000;         /* Ensure it stays above other content */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
   
-  .wd-nav-link {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-  }
-  
-  .wd-nav-link:hover {
-    text-decoration: underline;
-  }
-
-  .wd-title-bar {
-    display: flex;
-    align-items: center;      /* vertical centering */
-    justify-content: center;  /* horizontal centering */
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px; /* or your chosen height */
-    background-color: #08cfcf;
-    z-index: 1100;
-  }
-  
-  
-  .wd-title-text {
-    color: #ff69b4; /* Pink text */
-    font-size: 36px;
-    font-weight: bold;  
+  /* Ensure html and body take up full height */
+  html, body {
+    height: 100%;
     margin: 0;
   }
   
-  /* Adjust navbar position to account for title bar */
-  .wd-navbar {
-    top: 120px; /* Push navbar below the title bar */
-  }
-  
-  /* Adjust content position to account for both bars */
-  .wd-content {
-    padding-top: 130px; /* 50 (title) + 70 (navbar) + 10 extra spacing */
-  }
-
-  .wd-logo-image {
-    height: 100px;
-    max-width: 100%;
-    object-fit: contain;
-    margin-top: 40px;  /* Moves image down by 10px */
-  }
-  
-  .wd-blue-bg {
-    background-color: #08cfcf;
-    min-height: 100vh;  /* full viewport height */
-    width: 100vw;       /* full viewport width */
-  }
-
-  .wd-background-layer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #08cfcf;  /* your blue */
-    z-index: 0;                 /* behind everything */
-  }
-  
-  .wd-content-layer {
-    position: relative;
-    z-index: 1;                /* above background */
-  }
-  
-  #wd-home h1 {
-    font-family: 'Montserrat', sans-serif;
-  }  
-  
-  .montserrat-text {
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  #wd-home {
-    position: relative;
-    top: 120px;
-    height: calc(100vh - 120px);
-    width: 100vw;          /* full viewport width */
-    max-width: 100vw;      /* prevent max width restrictions */
-    margin: 0;             /* remove default margin */
-    padding: 0 20px;       /* optional side padding */
-    box-sizing: border-box; /* include padding in width */
+  /* Body Styling */
+  body {
+    background-color: #08cfcf; /* Your background color */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
     display: flex;
-    flex-direction: column;
-    justify-content: top;
-    align-items: center;    /* or flex-start / flex-end if you want */
-    text-align: center;
-  }
-
-  .countdown-image-wrapper {
-    background-image: url('/src/assets/gold.jpg'); /* Replace with actual path */
-    background-size: cover;
-    background-position: center;
-    width: 250px;           /* Adjust to match image size */
-    height: 100px;
-    border-radius: 20px;    /* Makes it rounded */
-    display: flex;
-    align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-top: 10px;
-  }
-  
-  .countdown-text {
-    font-size: 2rem;
-    font-weight: bold;
-    color: black;           /* Adjust for contrast */
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  .new-updates-section {
-    background-color: #f7f7f7;
-    height: 100; /* 80% of the viewport height */ /* ⬅️ increase this value */
-    width: 100%;
-    max-width: 950px;
-    overflow-y: auto;
-    padding: 1rem 1.5rem;
-    margin-top: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    font-family: 'Montserrat', sans-serif;
-    color: #333;
-    text-align: left;
-  }
-  
-
-  .new-updates-section p {
-    border-bottom: 1px solid gray;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .new-updates-section p:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-  
-  .wd-updates-heading {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.25rem; /* Or any size like 18px, 16px, etc. */
-    color: white;         /* Optional: for better contrast */
-    margin-top: 1rem;
-  }
-  
-  .wd-content {
-    padding-top: 220px; /* Push content down below logo + navbar */
-  }
-
-  #wd-islander {
-    padding-top: 220px; /* Ensures islander cards appear below logo + navbar */
-    background-color: #08cfcf; /* Consistent blue background */
+    align-items: center;
     min-height: 100vh;
   }
   
+  /* Main content container with fixed height */
+  .wd-content-container {
+    width: px;
+    height: 900px;  /* Fixed height for the content */
+    /* overflow-y: auto;  Enable scroll if content exceeds height */
+  }
+  
+  /* Responsiveness for smaller screens */
+  @media (max-width: 768px) {
+    .wd-content-container {
+      height: 200px; /* Reduce height for medium screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .wd-content-container {
+      height: 150px; /* Further reduce height for small screens */
+    }
+  }
   
