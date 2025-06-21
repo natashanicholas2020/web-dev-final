@@ -1,26 +1,43 @@
 /* ===== Two-column layout for Community Page ===== */
 
-.community-layout {
+#wd-community-screen {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .community-layout {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 2rem;
     margin-top: 2rem;
+  
+    flex-grow: 1;  /* Fill available vertical space */
+    min-height: 0; /* Allow children to shrink for scroll */
   }
   
   /* Left column: list of posts */
   .post-column {
     flex: 2;
+  
+    height: 100%;     /* Fill parent's height */
+    min-height: 0;    /* Needed for flex scroll to work */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 1rem; /* Prevent scrollbar overlapping content */
   }
   
   /* Right column: post creation form */
   .form-column {
     flex: 1;
-    background-color: #ffffff;
+    background-color: white;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     align-self: flex-start;
+  
+    height: 35%;
+    overflow: auto;
   }
   
   /* Styling for post form elements */
@@ -46,13 +63,13 @@
   .post-button:hover {
     background-color: #0056b3;
   }
-
+  
   /* Container for all post cards */
-.post-list {
+  .post-list {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;               /* vertical spacing */
+    gap: 30px; /* vertical spacing */
     margin-top: 20px;
   }
   
@@ -76,5 +93,17 @@
     color: #999;
     font-size: 0.9rem;
     margin-left: 0.5rem;
+  }
+  
+  /* Responsive: stack columns on small screens */
+  @media (max-width: 768px) {
+    .community-layout {
+      flex-direction: column;
+    }
+    .post-column,
+    .form-column {
+      height: auto;
+      overflow: visible;
+    }
   }
   

@@ -269,8 +269,8 @@ export default function Community() {
 
   return (
     <div id="wd-community-screen" className="wd-content-layer">
-      <h2 className="community-title">Community</h2>
-      <p className="auth-status">{token ? "logged in" : "anon"}</p>
+      {/* <h2 className="community-title">Community</h2>
+      <p className="auth-status">{token ? "logged in" : "anon"}</p> */}
 
       <div className="community-layout">
         {/* Posts on the left */}
