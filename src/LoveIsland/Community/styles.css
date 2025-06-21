@@ -107,3 +107,8 @@
     }
   }
   
+  .form-column h3,
+.form-column h4,
+.form-column p {
+  color: black;
+}

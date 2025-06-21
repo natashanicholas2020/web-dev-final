@@ -1,88 +1,4 @@
 // import { useEffect, useState } from "react";
-// import { Routes, Route, Link } from "react-router-dom";
-// import Post from "./Post";
-// import "./styles.css"; // Make sure this CSS file includes post styles
-
-// type PostType = {
-//   _id: string;
-//   username: string;
-//   message: string;
-//   datetime: string;
-// };
-
-// export default function Community() {
-//   const [posts, setPosts] = useState<PostType[]>([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState<string>("");
-
-//   useEffect(() => {
-//     const fetchPosts = async () => {
-//       try {
-//         const response = await fetch("http://localhost:4000/api/posts");
-//         if (!response.ok) throw new Error("Failed to fetch posts");
-//         const data = await response.json();
-//         setPosts(data.reverse());
-//       } catch (err) {
-//         setError("Failed to load posts. Please try again later.");
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchPosts();
-//   }, []);
-
-//   const token = localStorage.getItem("token");
-
-//   return (
-//     <div id="wd-community-screen" className="wd-content-layer">
-//       <h2 className="community-title">Community</h2>
-//       <p className="auth-status">{token ? "logged in" : "anon"}</p>
-
-//       <div className="text-center mb-3">
-//         <Link to="post" className="btn btn-primary">Create a Post</Link>
-//       </div>
-
-//       <Routes>
-//         <Route
-//           index
-//           element={
-//             loading ? (
-//               <p>Loading posts...</p>
-//             ) : error ? (
-//               <p>{error}</p>
-//             ) : posts.length === 0 ? (
-//               <p>No posts yet.</p>
-//             ) : (
-//               <div className="post-list">
-//                 {posts.map((post) => (
-//                   <div key={post._id} className="post-card">
-//                     <p>
-//                       <strong>{post.username}</strong>{" "}
-//                       <span className="post-datetime">
-//                         {new Date(post.datetime).toLocaleString()}
-//                       </span>
-//                     </p>
-//                     <p>{post.message}</p>
-//                   </div>
-//                 ))}
-//               </div>
-//             )
-//           }
-//         />
-//         <Route path="post" element={<Post />} />
-//       </Routes>
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-// import { useEffect, useState } from "react";
 // import "./styles.css";
 
 // type PostType = {
@@ -96,8 +12,7 @@
 //   const [posts, setPosts] = useState<PostType[]>([]);
 //   const [loading, setLoading] = useState(true);
 //   const [error, setError] = useState<string>("");
-//   const [message, setMessage] = useState("");
-//   const [postError, setPostError] = useState("");
+//   const [message, setMessage] = useState<string>("");
 
 //   const token = localStorage.getItem("token");
 
@@ -107,7 +22,7 @@
 //         const response = await fetch("http://localhost:4000/api/posts");
 //         if (!response.ok) throw new Error("Failed to fetch posts");
 //         const data = await response.json();
-//         setPosts(data);
+//         setPosts(data.reverse());  // Keep your existing order
 //       } catch (err) {
 //         setError("Failed to load posts. Please try again later.");
 //       } finally {
@@ -120,10 +35,13 @@
 
 //   const handleSubmit = async (e: React.FormEvent) => {
 //     e.preventDefault();
-//     setPostError("");
 
 //     if (!token) {
-//       setPostError("You must be logged in to post.");
+//       alert("Please log in to post.");
+//       return;
+//     }
+//     if (!message.trim()) {
+//       alert("Post message cannot be empty.");
 //       return;
 //     }
 
@@ -134,26 +52,26 @@
 //           "Content-Type": "application/json",
 //           Authorization: `Bearer ${token}`,
 //         },
-//         body: JSON.stringify({ message, name: "Anonymous" }), // replace name if needed
+//         body: JSON.stringify({ message, name: "Anonymous" }), // Adjust name as needed
 //       });
 
-//       if (!res.ok) throw new Error("Failed to post");
+//       if (!res.ok) throw new Error("Post failed");
 
 //       const newPost = await res.json();
 //       setPosts([newPost, ...posts]);
 //       setMessage("");
 //     } catch (err) {
-//       setPostError("Failed to post message.");
+//       alert("Failed to submit post.");
 //     }
 //   };
 
 //   return (
 //     <div id="wd-community-screen" className="wd-content-layer">
-//       <h2 className="community-title">Community</h2>
-//       <p className="auth-status">{token ? "logged in" : "anon"}</p>
+//       {/* <h2 className="community-title">Community</h2>
+//       <p className="auth-status">{token ? "logged in" : "anon"}</p> */}
 
 //       <div className="community-layout">
-//         {/* Left: Posts */}
+//         {/* Posts on the left */}
 //         <div className="post-column">
 //           {loading ? (
 //             <p>Loading posts...</p>
@@ -178,17 +96,16 @@
 //           )}
 //         </div>
 
-//         {/* Right: Create Post */}
+//         {/* Add Post form on the right */}
 //         <div className="form-column">
-//           <h4>Create a Post</h4>
-//           {postError && <p style={{ color: "red" }}>{postError}</p>}
+//           <h3>Create a Post</h3>
 //           <form onSubmit={handleSubmit}>
 //             <textarea
+//               className="post-input"
+//               placeholder="What's on your mind?"
 //               value={message}
 //               onChange={(e) => setMessage(e.target.value)}
-//               placeholder="What's on your mind?"
 //               required
-//               className="post-input"
 //             />
 //             <button type="submit" className="post-button">
 //               Post
@@ -217,15 +134,17 @@ export default function Community() {
   const [message, setMessage] = useState<string>("");
 
   const token = localStorage.getItem("token");
+  const loggedInUsername = localStorage.getItem("username") || "Anonymous";
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response = await fetch("http://localhost:4000/api/posts");
         if (!response.ok) throw new Error("Failed to fetch posts");
-        const data = await response.json();
-        setPosts(data.reverse());  // Keep your existing order
-      } catch (err) {
+        const data: PostType[] = await response.json();
+        // Assuming server returns posts newest last, reverse for newest first
+        setPosts(data.reverse());
+      } catch {
         setError("Failed to load posts. Please try again later.");
       } finally {
         setLoading(false);
@@ -234,6 +153,11 @@ export default function Community() {
 
     fetchPosts();
   }, []);
+
+  // Filter posts created by logged-in user (case insensitive)
+  const userPosts = posts.filter(
+    (post) => post.username.toLowerCase() === loggedInUsername.toLowerCase()
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -254,26 +178,24 @@ export default function Community() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ message, name: "Anonymous" }), // Adjust name as needed
+        body: JSON.stringify({ message, name: loggedInUsername }),
       });
 
       if (!res.ok) throw new Error("Post failed");
 
-      const newPost = await res.json();
-      setPosts([newPost, ...posts]);
+      const newPost: PostType = await res.json();
+
+      setPosts((prevPosts) => [newPost, ...prevPosts]);
       setMessage("");
-    } catch (err) {
+    } catch {
       alert("Failed to submit post.");
     }
   };
 
   return (
     <div id="wd-community-screen" className="wd-content-layer">
-      {/* <h2 className="community-title">Community</h2>
-      <p className="auth-status">{token ? "logged in" : "anon"}</p> */}
-
       <div className="community-layout">
-        {/* Posts on the left */}
+        {/* Left column: all posts */}
         <div className="post-column">
           {loading ? (
             <p>Loading posts...</p>
@@ -298,8 +220,34 @@ export default function Community() {
           )}
         </div>
 
-        {/* Add Post form on the right */}
+        {/* Right column: user posts + post creation form */}
         <div className="form-column">
+          {token && (
+            <>
+              <h4>Your Posts</h4>
+              {userPosts.length === 0 ? (
+                <p>You haven't posted yet.</p>
+              ) : (
+                <div
+                  className="post-list"
+                  style={{ maxHeight: "200px", overflowY: "auto" }}
+                >
+                  {userPosts.map((post) => (
+                    <div key={post._id} className="post-card">
+                      <p>
+                        <strong>{post.username}</strong>{" "}
+                        <span className="post-datetime">
+                          {new Date(post.datetime).toLocaleString()}
+                        </span>
+                      </p>
+                      <p>{post.message}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+
           <h3>Create a Post</h3>
           <form onSubmit={handleSubmit}>
             <textarea
