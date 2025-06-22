@@ -1,0 +1,79 @@
+import { useEffect, useState } from "react";
+import "./styles.css"
+
+const YOUTUBE_API_KEY = "AIzaSyDkJGO-3xzD7qEh5sVAtvGlaYPBRiIX6vI";
+const SEARCH_QUERY = "Love Island USA Season 7";
+const MAX_RESULTS = 30;
+
+// Define the expected video item type
+type YouTubeVideo = {
+  id: {
+    videoId: string;
+  };
+  snippet: {
+    title: string;
+    thumbnails: {
+      medium: {
+        url: string;
+      };
+    };
+  };
+};
+
+export default function Search() {
+  const [videos, setVideos] = useState<YouTubeVideo[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
+            SEARCH_QUERY
+          )}&type=video&key=${YOUTUBE_API_KEY}&maxResults=${MAX_RESULTS}`
+        );
+        const data = await response.json();
+        setVideos(data.items || []);
+      } catch (error) {
+        console.error("Error fetching YouTube videos:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchVideos();
+  }, []);
+
+  return (
+    <div>
+      <h2>Love Island Clips 🎥</h2>
+      {loading ? (
+        <p>Loading latest videos...</p>
+      ) : (
+        <div className="video-grid">
+          {videos.map((video) => {
+            const videoId = video.id?.videoId;
+            const snippet = video.snippet;
+            if (!videoId || !snippet) return null;
+
+            return (
+              <div key={videoId} className="video-card">
+                <a
+                  href={`https://www.youtube.com/watch?v=${videoId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={snippet.thumbnails.medium.url}
+                    alt={snippet.title}
+                  />
+                  <p>{snippet.title}</p>
+                </a>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
