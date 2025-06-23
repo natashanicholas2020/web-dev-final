@@ -41,6 +41,7 @@ import Islanders from "./Islanders";
 import IslanderDetails from "./Islanders/IslanderDetails";
 import Header from "./Header";
 import Search from "./Search";
+import Details from "./Search/Details"; //
 
 import './styles.css';
 
@@ -64,6 +65,7 @@ export default function LoveIsland() {
             <Route path="/LoveIsland/Islanders" element={<Islanders />} />
             <Route path="/LoveIsland/Islanders/:id" element={<IslanderDetails />} />
             <Route path="/LoveIsland/Search" element={<Search />} />
+            <Route path="/LoveIsland/Details/:id" element={<Details />} />
 
             {/* Catch all */}
             <Route path="*" element={<div>Page not found</div>} />
