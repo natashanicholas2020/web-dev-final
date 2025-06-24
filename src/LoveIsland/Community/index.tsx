@@ -144,7 +144,7 @@ export default function Community() {
           </div>
         ) : (
           <div className="form-column">
-            <p>Please log in to see your posts and create a new one.</p>
+            <p>Please log in to see your posts.</p>
           </div>
         )}
       </div>
