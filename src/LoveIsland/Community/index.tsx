@@ -15,15 +15,17 @@
 //   const [message, setMessage] = useState<string>("");
 
 //   const token = localStorage.getItem("token");
+//   const loggedInUsername = localStorage.getItem("username") || "Anonymous";
 
 //   useEffect(() => {
 //     const fetchPosts = async () => {
 //       try {
 //         const response = await fetch("http://localhost:4000/api/posts");
 //         if (!response.ok) throw new Error("Failed to fetch posts");
-//         const data = await response.json();
-//         setPosts(data.reverse());  // Keep your existing order
-//       } catch (err) {
+//         const data: PostType[] = await response.json();
+//         // Assuming server returns posts newest last, reverse for newest first
+//         setPosts(data.reverse());
+//       } catch {
 //         setError("Failed to load posts. Please try again later.");
 //       } finally {
 //         setLoading(false);
@@ -32,6 +34,11 @@
 
 //     fetchPosts();
 //   }, []);
+
+//   // Filter posts created by logged-in user (case insensitive)
+//   const userPosts = posts.filter(
+//     (post) => post.username.toLowerCase() === loggedInUsername.toLowerCase()
+//   );
 
 //   const handleSubmit = async (e: React.FormEvent) => {
 //     e.preventDefault();
@@ -52,26 +59,24 @@
 //           "Content-Type": "application/json",
 //           Authorization: `Bearer ${token}`,
 //         },
-//         body: JSON.stringify({ message, name: "Anonymous" }), // Adjust name as needed
+//         body: JSON.stringify({ message, name: loggedInUsername }),
 //       });
 
 //       if (!res.ok) throw new Error("Post failed");
 
-//       const newPost = await res.json();
-//       setPosts([newPost, ...posts]);
+//       const newPost: PostType = await res.json();
+
+//       setPosts((prevPosts) => [newPost, ...prevPosts]);
 //       setMessage("");
-//     } catch (err) {
+//     } catch {
 //       alert("Failed to submit post.");
 //     }
 //   };
 
 //   return (
 //     <div id="wd-community-screen" className="wd-content-layer">
-//       {/* <h2 className="community-title">Community</h2>
-//       <p className="auth-status">{token ? "logged in" : "anon"}</p> */}
-
 //       <div className="community-layout">
-//         {/* Posts on the left */}
+//         {/* Left column: all posts */}
 //         <div className="post-column">
 //           {loading ? (
 //             <p>Loading posts...</p>
@@ -96,9 +101,35 @@
 //           )}
 //         </div>
 
-//         {/* Add Post form on the right */}
+//         {/* Right column: user posts + post creation form */}
 //         <div className="form-column">
-//           <h3>Create a Post</h3>
+//           {token && (
+//             <>
+//               <h4>Your Posts</h4>
+//               {userPosts.length === 0 ? (
+//                 <p>You haven't posted yet.</p>
+//               ) : (
+//                 <div
+//                   className="post-list"
+//                   style={{ maxHeight: "200px", overflowY: "auto" }}
+//                 >
+//                   {userPosts.map((post) => (
+//                     <div key={post._id} className="post-card">
+//                       <p>
+//                         <strong>{post.username}</strong>{" "}
+//                         <span className="post-datetime">
+//                           {new Date(post.datetime).toLocaleString()}
+//                         </span>
+//                       </p>
+//                       <p>{post.message}</p>
+//                     </div>
+//                   ))}
+//                 </div>
+//               )}
+//             </>
+//           )}
+
+//           {/* <h3>Create a Post</h3>
 //           <form onSubmit={handleSubmit}>
 //             <textarea
 //               className="post-input"
@@ -110,12 +141,39 @@
 //             <button type="submit" className="post-button">
 //               Post
 //             </button>
-//           </form>
+//           </form> */}
+
+// {token && (
+//   <>
+//     <h3>Create a Post</h3>
+//     <form onSubmit={handleSubmit}>
+//       <textarea
+//         className="post-input"
+//         placeholder="What's on your mind?"
+//         value={message}
+//         onChange={(e) => setMessage(e.target.value)}
+//         required
+//       />
+//       <button type="submit" className="post-button">
+//         Post
+//       </button>
+//     </form>
+//   </>
+// )}
+
+
 //         </div>
 //       </div>
 //     </div>
 //   );
 // }
+
+
+
+
+
+
+
 
 import { useEffect, useState } from "react";
 import "./styles.css";
@@ -142,8 +200,7 @@ export default function Community() {
         const response = await fetch("http://localhost:4000/api/posts");
         if (!response.ok) throw new Error("Failed to fetch posts");
         const data: PostType[] = await response.json();
-        // Assuming server returns posts newest last, reverse for newest first
-        setPosts(data.reverse());
+        setPosts(data.reverse()); // Show newest first
       } catch {
         setError("Failed to load posts. Please try again later.");
       } finally {
@@ -154,7 +211,6 @@ export default function Community() {
     fetchPosts();
   }, []);
 
-  // Filter posts created by logged-in user (case insensitive)
   const userPosts = posts.filter(
     (post) => post.username.toLowerCase() === loggedInUsername.toLowerCase()
   );
@@ -184,7 +240,6 @@ export default function Community() {
       if (!res.ok) throw new Error("Post failed");
 
       const newPost: PostType = await res.json();
-
       setPosts((prevPosts) => [newPost, ...prevPosts]);
       setMessage("");
     } catch {
@@ -220,48 +275,46 @@ export default function Community() {
           )}
         </div>
 
-        {/* Right column: user posts + post creation form */}
-        <div className="form-column">
-          {token && (
-            <>
-              <h4>Your Posts</h4>
-              {userPosts.length === 0 ? (
-                <p>You haven't posted yet.</p>
-              ) : (
-                <div
-                  className="post-list"
-                  style={{ maxHeight: "200px", overflowY: "auto" }}
-                >
-                  {userPosts.map((post) => (
-                    <div key={post._id} className="post-card">
-                      <p>
-                        <strong>{post.username}</strong>{" "}
-                        <span className="post-datetime">
-                          {new Date(post.datetime).toLocaleString()}
-                        </span>
-                      </p>
-                      <p>{post.message}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </>
-          )}
+        {/* Right column: visible only when logged in */}
+        {token && (
+          <div className="form-column">
+            <h4>Your Posts</h4>
+            {userPosts.length === 0 ? (
+              <p>You haven't posted yet.</p>
+            ) : (
+              <div
+                className="post-list"
+                style={{ maxHeight: "200px", overflowY: "auto" }}
+              >
+                {userPosts.map((post) => (
+                  <div key={post._id} className="post-card">
+                    <p>
+                      <strong>{post.username}</strong>{" "}
+                      <span className="post-datetime">
+                        {new Date(post.datetime).toLocaleString()}
+                      </span>
+                    </p>
+                    <p>{post.message}</p>
+                  </div>
+                ))}
+              </div>
+            )}
 
-          <h3>Create a Post</h3>
-          <form onSubmit={handleSubmit}>
-            <textarea
-              className="post-input"
-              placeholder="What's on your mind?"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              required
-            />
-            <button type="submit" className="post-button">
-              Post
-            </button>
-          </form>
-        </div>
+            <h3>Create a Post</h3>
+            <form onSubmit={handleSubmit}>
+              <textarea
+                className="post-input"
+                placeholder="What's on your mind?"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                required
+              />
+              <button type="submit" className="post-button">
+                Post
+              </button>
+            </form>
+          </div>
+        )}
       </div>
     </div>
   );
