@@ -1,37 +1,3 @@
-// import { useEffect, useState } from "react";
-
-// export default function Header() {
-//   const [sticky, setSticky] = useState(false);
-
-//   useEffect(() => {
-//     function handleScroll() {
-//       // When window scroll Y passes the height of the logo bar (500px), set sticky true
-//       if (window.scrollY > 500) {
-//         setSticky(true);
-//       } else {
-//         setSticky(false);
-//       }
-//     }
-
-//     window.addEventListener("scroll", handleScroll);
-
-//     return () => window.removeEventListener("scroll", handleScroll);
-//   }, []);
-
-//   return (
-//     <>
-//       <div className={`wd-title-bar ${sticky ? "scroll-away" : ""}`}>
-//         <img src="/path/to/logo.png" alt="Logo" className="wd-logo-image" />
-//       </div>
-
-//       <nav className={`wd-navbar ${sticky ? "sticky" : ""}`}>
-//         {/* Your nav links here */}
-//       </nav>
-//     </>
-//   );
-// }
-
-
 import { useEffect, useState } from "react";
 import logo from "../../assets/logo.png";  // Adjust path if needed
 import { Link } from "react-router-dom";
