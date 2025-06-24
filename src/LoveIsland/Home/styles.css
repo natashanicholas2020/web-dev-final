@@ -148,3 +148,58 @@ body {
     font-weight: 600;
     color: #333;
   }
+
+  /* ===== Your Posts Section on Home Page ===== */
+
+.home-user-posts {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  margin: 1rem auto;
+  width: 90%;
+  max-width: 800px;
+  max-height: 300px;
+  overflow-y: auto;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.home-user-posts h3 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.home-user-posts .post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.home-user-posts .post-card {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.home-user-posts .post-datetime {
+  color: #777;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+}
+
+/* Optional: Scrollbar styling for consistency */
+.home-user-posts::-webkit-scrollbar {
+  width: 6px;
+}
+
+.home-user-posts::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 6px;
+}
+
+.home-user-posts::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
