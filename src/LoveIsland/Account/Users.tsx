@@ -9,15 +9,14 @@
 //   email: string;
 //   dob: string;
 //   role: string;
-//   followers: string[];
-//   following: string[];
+//   followers?: string[];
+//   following?: string[];
 // };
 
 // type Post = {
 //   _id: string;
 //   message: string;
 //   datetime: string;
-//   // add other fields you want
 // };
 
 // export default function Users() {
@@ -55,9 +54,10 @@
 //         const postsData: Post[] = await postsRes.json();
 //         setPosts(postsData);
 
-//         // Check if current user follows this user
-//         const currentUsername = localStorage.getItem('username');
-//         setIsFollowing(userData.followers.includes(currentUsername || ''));
+//         // Check if current user follows this user — safely
+//         const currentUsername = localStorage.getItem('username') || '';
+//         const followersArray = Array.isArray(userData.followers) ? userData.followers : [];
+//         setIsFollowing(followersArray.includes(currentUsername));
 
 //       } catch (e) {
 //         setError((e as Error).message);
@@ -110,6 +110,20 @@
 //       <p>Email: {user.email}</p>
 //       <p>DOB: {user.dob}</p>
 //       <p>Role: {user.role}</p>
+//       <p>Followers: {user.followers?.length ?? 0}</p>
+      
+//       <div>
+//         <h5>Following ({user.following?.length ?? 0}):</h5>
+//         {user.following && user.following.length > 0 ? (
+//           <ul>
+//             {user.following.map((followedUser) => (
+//               <li key={followedUser}>{followedUser}</li>
+//             ))}
+//           </ul>
+//         ) : (
+//           <p>This user is not following anyone yet.</p>
+//         )}
+//       </div>
 
 //       <Button onClick={handleFollowToggle} disabled={followLoading}>
 //         {followLoading ? (
@@ -137,20 +151,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button, Alert, Spinner } from 'react-bootstrap';
@@ -162,7 +162,7 @@ type User = {
   email: string;
   dob: string;
   role: string;
-  followers?: string[];  // made optional to reflect possible absence
+  followers?: string[];
   following?: string[];
 };
 
@@ -170,7 +170,6 @@ type Post = {
   _id: string;
   message: string;
   datetime: string;
-  // add other fields you want
 };
 
 export default function Users() {
@@ -260,25 +259,72 @@ export default function Users() {
 
   return (
     <div className="container py-4">
-      <h2>{user.firstName} {user.lastName} ({user.username})</h2>
-      <p>Email: {user.email}</p>
-      <p>DOB: {user.dob}</p>
-      <p>Role: {user.role}</p>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          gap: '2rem',
+        }}
+      >
+        {/* Left: User info */}
+        <div style={{ flex: 1 }}>
+          <h2>
+            {user.firstName} {user.lastName} ({user.username})
+          </h2>
+          <p>Email: {user.email}</p>
+          <p>DOB: {user.dob}</p>
+          <p>Role: {user.role}</p>
+        </div>
 
-      <Button onClick={handleFollowToggle} disabled={followLoading}>
-        {followLoading ? (
-          <Spinner animation="border" size="sm" />
-        ) : (
-          isFollowing ? 'Unfollow' : 'Follow'
-        )}
-      </Button>
+        {/* Right: Followers, Following, Follow Button */}
+        <div
+          style={{
+            minWidth: '250px',
+            border: '1px solid #ddd',
+            padding: '1rem',
+            borderRadius: '8px',
+          }}
+        >
+          <p>
+            <strong>Followers:</strong> {user.followers?.length ?? 0}
+          </p>
+
+          <div>
+            <strong>Following ({user.following?.length ?? 0}):</strong>
+            {user.following && user.following.length > 0 ? (
+              <ul style={{ paddingLeft: '1.2rem' }}>
+                {user.following.map((followedUser) => (
+                  <li key={followedUser}>{followedUser}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>This user is not following anyone yet.</p>
+            )}
+          </div>
+
+          <Button
+            onClick={handleFollowToggle}
+            disabled={followLoading}
+            style={{ marginTop: '1rem', width: '100%' }}
+          >
+            {followLoading ? (
+              <Spinner animation="border" size="sm" />
+            ) : isFollowing ? (
+              'Unfollow'
+            ) : (
+              'Follow'
+            )}
+          </Button>
+        </div>
+      </div>
 
       <hr />
 
       <h3>Posts by {user.username}</h3>
       {posts.length === 0 && <p>No posts yet.</p>}
       <ul>
-        {posts.map(post => (
+        {posts.map((post) => (
           <li key={post._id}>
             <p>{post.message}</p>
             <small>{new Date(post.datetime).toLocaleString()}</small>
