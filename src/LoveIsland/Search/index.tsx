@@ -46,7 +46,7 @@ export default function Search() {
 
   return (
     <div>
-      <h2>YouTube Search 🎥</h2>
+      <h2>YouTube Search</h2>
 
       <form onSubmit={handleSearch} style={{ marginBottom: "1rem" }}>
         <input
