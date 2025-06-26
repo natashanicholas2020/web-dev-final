@@ -59,28 +59,34 @@ export default function Profile() {
       setSearchError("");
       return;
     }
-
+  
     const delayDebounce = setTimeout(async () => {
       setSearchLoading(true);
       setSearchError("");
-
+  
       try {
         const token = localStorage.getItem("token");
+        const currentUsername = localStorage.getItem("username"); // get current logged in username
         if (!token) {
           navigate("/LoveIsland/Account/Signin");
           return;
         }
-
-        // Replace with your actual search endpoint
+  
         const res = await fetch(`http://localhost:4000/api/users/search?q=${encodeURIComponent(searchTerm)}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-
+  
         if (!res.ok) throw new Error("Search failed");
-
-        const results = await res.json();
+  
+        let results = await res.json();
+  
+        // Filter out the current logged-in user from search results
+        if (currentUsername) {
+          results = results.filter((user: User) => user.username !== currentUsername);
+        }
+  
         setSearchResults(results);
       } catch {
         setSearchError("Failed to search users. Please try again.");
@@ -88,9 +94,10 @@ export default function Profile() {
         setSearchLoading(false);
       }
     }, 500); // debounce delay 500ms
-
+  
     return () => clearTimeout(delayDebounce);
   }, [searchTerm, navigate]);
+  
 
   const handleChange = (field: keyof User, value: string) => {
     if (user) {
