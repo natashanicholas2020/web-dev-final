@@ -129,7 +129,6 @@ type PostWithReactionsProps = {
 };
 
 function PostWithReactions({
-  _id,
   username,
   message,
   datetime,
