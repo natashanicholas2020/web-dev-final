@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Spinner, Alert, ListGroup, InputGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 type User = {
   username: string;
@@ -175,14 +176,20 @@ export default function Profile() {
             {/* Search results */}
             {searchError && <Alert variant="danger">{searchError}</Alert>}
             {searchResults.length > 0 && (
-              <ListGroup className="mb-4" style={{ maxHeight: 200, overflowY: "auto" }}>
-                {searchResults.map((result) => (
-                  <ListGroup.Item key={result.username}>
-                    <strong>{result.username}</strong> — {result.firstName} {result.lastName} ({result.email})
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            )}
+  <ListGroup className="mb-4" style={{ maxHeight: 200, overflowY: "auto" }}>
+    {searchResults.map((result) => (
+      <ListGroup.Item key={result.username} action>
+        <Link 
+          to={`/LoveIsland/Users/${result.username}`} 
+          style={{ textDecoration: "none", color: "inherit", display: "block" }}
+          aria-label={`View profile of ${result.username}`}
+        >
+          <strong>{result.username}</strong> — {result.firstName} {result.lastName} ({result.email})
+        </Link>
+      </ListGroup.Item>
+    ))}
+  </ListGroup>
+)}
 
             {success && <Alert variant="success">{success}</Alert>}
 

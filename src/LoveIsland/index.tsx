@@ -9,6 +9,7 @@ import Header from "./Header";
 import Search from "./Search";
 import Details from "./Search/Details";
 import ReplyPage from "./Community/Reply";  // <-- Import ReplyPage component
+import Users from "./Account/Users"; 
 
 import './styles.css';
 
@@ -39,6 +40,7 @@ export default function LoveIsland() {
             <Route path="/LoveIsland/Islanders/:id" element={<IslanderDetails />} />
             <Route path="/LoveIsland/Search" element={<Search />} />
             <Route path="/LoveIsland/Details/:id" element={<Details />} />
+            <Route path="/LoveIsland/Users/:username" element={<Users />} />
 
             {/* Catch all */}
             <Route path="*" element={<div>Page not found</div>} />
