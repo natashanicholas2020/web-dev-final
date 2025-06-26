@@ -4,14 +4,12 @@ function getNext9PM(): Date {
   const now = new Date();
   const next9PM = new Date();
 
-  next9PM.setHours(21, 0, 0, 0); // Set to 9:00 PM today
+  next9PM.setHours(21, 0, 0, 0); 
 
-  // If 9 PM today already passed, move to the next day
   if (now >= next9PM) {
     next9PM.setDate(next9PM.getDate() + 1);
   }
 
-  // If the next 9 PM falls on a Wednesday (3), skip to Thursday (add 1 more day)
   if (next9PM.getDay() === 3) {
     next9PM.setDate(next9PM.getDate() + 1);
   }
@@ -44,7 +42,7 @@ export default function Countdown() {
 
   return (
     <div>
-    <div className="countdown-container"> {/* Wrap in countdown-container */}
+    <div className="countdown-container"> 
       <div className="countdown-image-wrapper">
         <p className="countdown-text">{formatTime(timeLeft)}</p>
       </div>

@@ -1,4 +1,4 @@
-import LoveIsland from "./LoveIsland";  // or wherever index.tsx is located
+import LoveIsland from "./LoveIsland";
 
 export default function App() {
   return <LoveIsland />;

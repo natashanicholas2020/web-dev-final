@@ -71,7 +71,6 @@ export default function Signup() {
         return;
       }
 
-      // Signup successful - redirect to signin
       setLoading(false);
       navigate("/LoveIsland/Account/Signin");
     } catch (err) {

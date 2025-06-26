@@ -27,10 +27,8 @@ export default function Signin() {
       const data = await res.json();
       localStorage.setItem("token", data.token);
 
-      // *** ADD THIS LINE TO SAVE USERNAME ***
       localStorage.setItem("username", username);
 
-      // Redirect to Profile page after login
       navigate("/LoveIsland/Account/Profile");
     } catch (err) {
       setError("Server error. Please try again later.");

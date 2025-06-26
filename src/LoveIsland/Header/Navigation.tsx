@@ -1,6 +1,5 @@
-// navigation.tsx
 import { Link } from "react-router-dom";
-import "./styles.css"; // Optional: for styling
+import "./styles.css"; 
 
 export default function Navigation() {
   return (

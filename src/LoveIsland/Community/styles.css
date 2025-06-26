@@ -1,7 +1,5 @@
-/* ===== Two-column layout for Community Page ===== */
-
 #wd-community-screen {
-  height: 100vh; /* Full viewport height */
+  height: 100vh; 
   display: flex;
   flex-direction: column;
 }
@@ -13,35 +11,32 @@
   gap: 2rem;
   margin-top: 2rem;
 
-  flex-grow: 1;  /* Fill available vertical space */
-  min-height: 0; /* Allow children to shrink for scroll */
+  flex-grow: 1; 
+  min-height: 0; 
 }
 
-/* Left column: list of posts */
 .post-column {
   flex: 2;
 
-  height: 100%;     /* Fill parent's height */
-  min-height: 0;    /* Needed for flex scroll to work */
-  overflow-y: auto; /* Enable vertical scrolling */
-  padding-right: 1rem; /* Prevent scrollbar overlapping content */
+  height: 100%;   
+  min-height: 0;   
+  overflow-y: auto; 
+  padding-right: 1rem;
 }
 
-/* Right column: post creation form */
 .form-column {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 
-  padding-top: 1.5rem; /* push cards lower vertically */
+  padding-top: 1.5rem;
 
-  height: 100%; /* fill available height */
-  min-height: 0; /* important for flexbox scroll */
-  overflow: visible; /* do NOT scroll here */
+  height: 100%;
+  min-height: 0;
+  overflow: visible; 
 }
 
-/* Styling for individual cards */
 .card {
   background-color: white;
   padding: 1rem;
@@ -52,13 +47,11 @@
   flex-direction: column;
 }
 
-/* This makes each card scrollable independently */
 .scrollable-card {
-  max-height: 300px; /* adjust as needed */
+  max-height: 300px; 
   overflow-y: auto;
 }
 
-/* Styling for post form elements */
 .post-input {
   width: 100%;
   min-height: 100px;
@@ -82,17 +75,15 @@
   background-color: #0056b3;
 }
 
-/* Container for all post cards */
 .post-list {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px; /* vertical spacing */
+  gap: 30px; 
   margin-top: 20px;
   width: 100%;
 }
 
-/* Individual post card */
 .post-card {
   background-color: #ffffff;
   color: #000000;
@@ -114,7 +105,6 @@
   margin-left: 0.5rem;
 }
 
-/* Responsive: stack columns on small screens */
 @media (max-width: 768px) {
   .community-layout {
     flex-direction: column;
@@ -135,7 +125,7 @@
 .post-card {
   background-color: #ffffff;
   color: #000000;
-  padding: 1rem 1.5rem 3rem 1.5rem; /* bottom padding for reaction bar */
+  padding: 1rem 1.5rem 3rem 1.5rem;
   width: 100%;
   max-width: 500px;
   border-radius: 8px;
@@ -172,7 +162,6 @@
   font-size: 1rem;
 }
 
-/* Reaction buttons */
 .reaction-button {
   background: none;
   border: none;
@@ -190,5 +179,5 @@
 }
 
 .reaction-button.active {
-  color: #007bff; /* blue fill when active */
+  color: #007bff;
 }

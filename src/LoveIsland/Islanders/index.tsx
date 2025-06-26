@@ -7,7 +7,7 @@ interface Islander {
   first_name: string;
   last_name: string;
   image?: string;
-  episode_left: number | null; // Add this field
+  episode_left: number | null; 
 }
 
 export default function Islanders() {

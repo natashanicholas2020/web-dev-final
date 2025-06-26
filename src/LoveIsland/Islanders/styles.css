@@ -1,5 +1,5 @@
 html, body {
-    height: auto; /* allow full height */
+    height: auto; 
     width: 100%;
     margin: 0;
     padding: 0;
@@ -8,12 +8,12 @@ html, body {
   }
   
   #root {
-    position: fixed;   /* fix to viewport */
-    top: 200px;       /* start 200px from top */
+    position: fixed; 
+    top: 200px;    
     left: 0;
     right: 0;
-    bottom: 0;        /* stretch to bottom */
-    overflow-y: auto; /* enable vertical scroll if content overflows */
+    bottom: 0;     
+    overflow-y: auto; 
     background-color: #08cfcf;
     margin: 0;
     padding: 0;

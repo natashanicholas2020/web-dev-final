@@ -10,7 +10,7 @@ interface Islander {
   hometown: string;
   episode_entered: number;
   episode_left: number | null;
-  image?: string; // optional field for image
+  image?: string;
 }
 
 export default function IslanderDetails() {
@@ -48,12 +48,12 @@ export default function IslanderDetails() {
           className="islander-image"
         />
       )}
-      {/* Islander name outside the white card, white text */}
+
       <h2 className="islander-name">
         {islander.first_name} {islander.last_name}
       </h2>
 
-      {/* White card with black text for details */}
+
       <div className="islander-details-card">
         <p><strong>Age:</strong> {islander.age}</p>
         <p><strong>Astrology Sign:</strong> {islander.astrology_sign}</p>

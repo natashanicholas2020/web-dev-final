@@ -1,55 +1,50 @@
    .wd-title-bar {
     display: flex;
-    align-items: center;      /* vertically center */
-    justify-content: center;  /* horizontally center */
+    align-items: center;      
+    justify-content: center;  
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 120px;            /* fixed height */
+    height: 120px;         
     background-color: #08cfcf;
-    z-index: 1100;            /* Lower z-index so navbar can be above */
-    padding: 0 10px;          /* optional horizontal padding */
-    box-sizing: border-box;   /* include padding in height/width */
+    z-index: 1100;        
+    padding: 0 10px;       
+    box-sizing: border-box; 
   
-    /* Add smooth transition on opacity and transform */
     transition: opacity 0.4s ease, transform 0.4s ease;
   }
   
   .wd-logo-image {
-    max-height: 100%;         /* never exceed height of title bar */
-    max-width: 100%;          /* don’t overflow container width */
-    object-fit: contain;      /* maintain aspect ratio */
-    margin-top: 0;            /* remove any top margin */
+    max-height: 100%;       
+    max-width: 100%;      
+    object-fit: contain;  
+    margin-top: 0;        
   }
   
-  /* Scroll-away effect: fade and slide logo up smoothly */
   .wd-title-bar.scroll-away {
     opacity: 0;
     transform: translateY(-50%);
-    pointer-events: none; /* optional: disable interaction when hidden */
+    pointer-events: none; 
   }
   
-  /* Navigation bar styles */
   .wd-navbar {
-    position: fixed;          /* Makes it stick to the screen */
-    top: 120px;               /* Positioned just below the title bar initially */
+    position: fixed;     
+    top: 120px;          
     left: 0;
     right: 0;
-    height: 70px;             /* Make it taller */
+    height: 70px;        
     background-color: #ff69b4;
     display: flex;
     align-items: center;
     padding: 0 30px;
     gap: 30px;
-    z-index: 10000;           /* Higher z-index to appear above title bar */
+    z-index: 10000;         
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   
-    /* Smooth transition on top for sticky effect */
     transition: top 0.3s ease;
   }
   
-  /* Sticky nav bar that stays at top when scrolling */
   .wd-navbar.sticky {
     top: 0;
   }

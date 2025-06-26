@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import logo from "../../assets/logo.png";  // Adjust path if needed
+import logo from "../../assets/logo.png";  
 import { Link } from "react-router-dom";
-import "./styles.css";  // Your existing CSS file, with the styles you shared
+import "./styles.css";  
 
 export default function Header() {
   const [sticky, setSticky] = useState(false);

@@ -1,19 +1,19 @@
-/* Global reset for margin and padding */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
   
-  /* Ensure html and body take up full height */
+
   html, body {
     height: 100%;
     margin: 0;
   }
   
-  /* Body Styling */
+
   body {
-    background-color: #08cfcf; /* Your background color */
+    background-color: #08cfcf; 
     font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
@@ -23,23 +23,23 @@
     min-height: 100vh;
   }
   
-  /* Main content container with fixed height */
+
   .wd-content-container {
     width: px;
-    height: 900px;  /* Fixed height for the content */
-    /* overflow-y: auto;  Enable scroll if content exceeds height */
+    height: 900px;  
+
   }
   
-  /* Responsiveness for smaller screens */
+
   @media (max-width: 768px) {
     .wd-content-container {
-      height: 200px; /* Reduce height for medium screens */
+      height: 200px; 
     }
   }
   
   @media (max-width: 480px) {
     .wd-content-container {
-      height: 150px; /* Further reduce height for small screens */
+      height: 150px; 
     }
   }
   
