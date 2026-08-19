@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../../config/api";
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./styles.css"
@@ -16,7 +17,7 @@ export default function Islanders() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/islanders')
+    fetch(`${API_BASE_URL}/api/islanders`)
       .then((res) => {
         if (!res.ok) throw new Error('Network response was not ok');
         return res.json();
@@ -68,9 +69,3 @@ export default function Islanders() {
     </div>
     );
   }
-
-
-
-
-
-

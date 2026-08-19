@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../../config/api";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Countdown from "./Countdown";
@@ -46,7 +47,7 @@ export default function Home() {
   const loggedInUsername = localStorage.getItem("username") || "";
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/islanders")
+    fetch(`${API_BASE_URL}/api/islanders`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch islanders");
         return res.json();
@@ -68,7 +69,7 @@ export default function Home() {
       return;
     }
 
-    fetch("http://localhost:4000/api/posts")
+    fetch(`${API_BASE_URL}/api/posts`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch posts");
         return res.json();

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../../config/api";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Form, Button, Alert, Spinner } from "react-bootstrap";
@@ -50,7 +51,7 @@ export default function Signup() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:4000/api/signup", {
+      const res = await fetch(`${API_BASE_URL}/api/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../../config/api";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
@@ -30,7 +31,7 @@ export default function Community() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/posts");
+        const response = await fetch(`${API_BASE_URL}/api/posts`);
         if (!response.ok) throw new Error("Failed to fetch posts");
         const data: PostType[] = await response.json();
 
@@ -68,7 +69,7 @@ export default function Community() {
     }
 
     try {
-      const res = await fetch("http://localhost:4000/api/posts", {
+      const res = await fetch(`${API_BASE_URL}/api/posts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -108,7 +109,7 @@ export default function Community() {
 
     try {
       const res = await fetch(
-        `http://localhost:4000/api/posts/${postId}/like`,
+        `${API_BASE_URL}/api/posts/${postId}/like`,
         {
           method: "POST",
           headers: {

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../../config/api";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
@@ -30,7 +31,7 @@ export default function Reply() {
   useEffect(() => {
     const fetchPostAndReplies = async () => {
       try {
-        const postRes = await fetch(`http://localhost:4000/api/posts/${postId}`);
+        const postRes = await fetch(`${API_BASE_URL}/api/posts/${postId}`);
         if (!postRes.ok) throw new Error("Failed to fetch post");
         const postData: PostType = await postRes.json();
         setPost(postData);
@@ -57,7 +58,7 @@ export default function Reply() {
     }
 
     try {
-      const res = await fetch(`http://localhost:4000/api/posts/${postId}/replies`, {
+      const res = await fetch(`${API_BASE_URL}/api/posts/${postId}/replies`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

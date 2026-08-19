@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../../config/api";
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
@@ -40,7 +41,7 @@ export default function Profile() {
       }
 
       try {
-        const res = await fetch("http://localhost:4000/api/profile", {
+        const res = await fetch(`${API_BASE_URL}/api/profile`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -80,7 +81,7 @@ export default function Profile() {
         }
 
         const res = await fetch(
-          `http://localhost:4000/api/users/search?q=${encodeURIComponent(
+          `${API_BASE_URL}/api/users/search?q=${encodeURIComponent(
             searchTerm
           )}`,
           {
@@ -123,7 +124,7 @@ export default function Profile() {
     if (!token || !user) return;
 
     try {
-      const res = await fetch("http://localhost:4000/api/profile", {
+      const res = await fetch(`${API_BASE_URL}/api/profile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

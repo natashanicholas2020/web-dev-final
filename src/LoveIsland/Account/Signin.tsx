@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../../config/api";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Form, Button, Alert } from "react-bootstrap";
@@ -13,7 +14,7 @@ export default function Signin() {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:4000/api/login", {
+      const res = await fetch(`${API_BASE_URL}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),

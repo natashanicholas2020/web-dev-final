@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../../config/api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -20,7 +21,7 @@ export default function IslanderDetails() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/islanders/${id}`)
+    fetch(`${API_BASE_URL}/api/islanders/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch islander");
         return res.json();

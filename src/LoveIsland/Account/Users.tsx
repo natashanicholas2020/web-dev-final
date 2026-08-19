@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../../config/api";
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button, Alert, Spinner, Card } from 'react-bootstrap';
@@ -51,7 +52,7 @@ export default function Users() {
         const token = localStorage.getItem('token');
 
         // Fetch user info
-        const userRes = await fetch(`http://localhost:4000/api/users/${username}`, {
+        const userRes = await fetch(`${API_BASE_URL}/api/users/${username}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!userRes.ok) throw new Error('Failed to fetch user');
@@ -59,7 +60,7 @@ export default function Users() {
         setUser(userData);
 
         // Fetch user posts
-        const postsRes = await fetch(`http://localhost:4000/api/users/${username}/posts`, {
+        const postsRes = await fetch(`${API_BASE_URL}/api/users/${username}/posts`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!postsRes.ok) throw new Error('Failed to fetch posts');
@@ -67,7 +68,7 @@ export default function Users() {
         setPosts(postsData);
 
         // Fetch user likes
-        const likesRes = await fetch(`http://localhost:4000/api/users/${username}/likes`, {
+        const likesRes = await fetch(`${API_BASE_URL}/api/users/${username}/likes`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!likesRes.ok) throw new Error('Failed to fetch likes');
@@ -105,8 +106,8 @@ export default function Users() {
     try {
       const token = localStorage.getItem('token');
       const endpoint = isFollowing
-        ? `http://localhost:4000/api/users/${username}/unfollow`
-        : `http://localhost:4000/api/users/${username}/follow`;
+        ? `${API_BASE_URL}/api/users/${username}/unfollow`
+        : `${API_BASE_URL}/api/users/${username}/follow`;
 
       const res = await fetch(endpoint, {
         method: 'POST',
